@@ -2,18 +2,24 @@
 
 try {
   // Database connection credentials
-  // $db_servername = "localhost";
-  // $db_username = "root";
-  // $db_password = "PeerPal"; 
-  // $db_name = "FoodieHub";
+  $db_servername = "localhost";
+  $db_username = "root";
+  $db_password = "PeerPal"; 
+  $db_name = "FoodieHub";
 
   // Import load_dotenv
 
-  require_once("load_dotenv.php");
-  $db_servername = $_ENV['DB_SERVERNAME'];
-  $db_username = $_ENV['DB_USERNAME'];
-  $db_password = $_ENV['DB_PASSWORD']; 
-  $db_name = $_ENV['DB_NAME'];
+  // require_once("load_dotenv.php");
+  // $db_servername = $_ENV['DB_SERVERNAME'];
+  // $db_username = $_ENV['DB_USERNAME'];
+  // $db_password = $_ENV['DB_PASSWORD']; 
+  // $db_name = $_ENV['DB_NAME'];
+
+
+  // echo "<p> " .$db_servername. "</p>";
+  // echo "<p> " .$db_username. "</p>";
+  // echo "<p> " .$db_password. "</p>";
+  // echo "<p> " .  $db_name. "</p>";
 
   // connect database
 
@@ -24,6 +30,9 @@ try {
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   //////////////////////////////////////// Start Creating Tables ////////////////////////////////////////////
+  // CREATE DATABASE
+
+  $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
 
   // Create Users Table
 
@@ -75,6 +84,7 @@ try {
 
 // Execute SQL commands
 
+$pdo->exec($sql_db);
 $pdo->exec($sql_users);
 $pdo->exec($sql_recipes);
 $pdo->exec($sql_favorites);

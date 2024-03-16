@@ -14,5 +14,3 @@ if ($dotenv) {
   }
   fclose($dotenv);
 }
-
-?>

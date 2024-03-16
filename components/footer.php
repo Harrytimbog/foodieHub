@@ -1,21 +1,4 @@
 <footer>
-  <ul class="footer-links">
-    <li>
-        <a href="#">Terms</a>
-    </li>
-    <li>
-      <a href="#">Contact us</a>
-    </li>
-    <li>
-      <a href="#">Cookies</a>
-    </li>
-    <li>
-      <a href="#">Safety</a>
-    </li>
-    <li>
-      <a href="#">FAQ</a>
-    </li>
-  </ul>
   <ul class="social-links">
     <li><a href="#">
       <img class="social-icon" src="/images/icons/instagram.png" alt="">

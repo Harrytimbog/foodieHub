@@ -1,0 +1,20 @@
+:root {
+  --primary-color: #d8d8d8; /* Main background color */
+  --secondary-color: #1a62a8; /*  for texts */
+  --accent-color: #4ac5b1; /*  Primary accent */
+  --accent-color2: #337179; /* Secondary accent */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.recipe-page {
+  height: 100vh;
+}

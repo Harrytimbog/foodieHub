@@ -61,9 +61,14 @@ img {
 }
 
 .nav-links li:hover {
-  opacity: 0.6;
-  text-decoration: underline;
-  text-decoration-color: white;
+  text-decoration: none;
+  /* text-decoration-color: white; */
+}
+
+.nav-links a:hover {
+  text-decoration: none;
+  color: var(--accent-color2);
+  /* text-decoration-color: white; */
 }
 
 #menu-btn {

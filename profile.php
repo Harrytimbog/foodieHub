@@ -16,9 +16,10 @@
       <h1>User Profile Page</h1>
       
       
-      <!-- FOOTER -->
+      <a href="/manage-profile.php">Manage Profile</a>
       <a href="/">back home</a>
-  </main>
+    </main>
+    <!-- FOOTER -->
   <?php include("./components/footer.php") ?>
 </body>
 

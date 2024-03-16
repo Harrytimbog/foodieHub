@@ -90,8 +90,8 @@ $pdo->exec($sql_recipes);
 $pdo->exec($sql_favorites);
 $pdo->exec($sql_comments);
 
-echo "Tables created successfully";
-echo "<p>Tables created successfully<p>";
+// echo "Tables created successfully";
+// echo "<p>Tables created successfully<p>";
 ////////////////////////////////////////////// Finished Creating Table //////////////////////////////////////
 } catch (PDOException $e) {
   echo "Error occured while creating tables " . $e->getMessage();

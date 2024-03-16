@@ -9,5 +9,7 @@
   <h1>
     User Profile
   </h1>
+
+  <a href="/">back home</a>
 </body>
 </html>

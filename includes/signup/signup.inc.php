@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       $_SESSION["signup_data"] = $signupDetails;
 
-      header("Location: ../../signup.php");
+      header("Location: ../../login.php");
       die();
     }
 

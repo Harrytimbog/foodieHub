@@ -26,8 +26,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = find_user($pdo, $username);
 
     if (is_username_incorrect($result)) {
-      $errors["login_input_incorrect"] = "Incorrect login info!";
+      $errors["login_input_incorrect"] = "Incorrect username!";
     }
+
+    // if (is_password_incorrect($password, $result['password'])) {
+    //   $errors["login_input_incorrect"] = "Incorrect password!";
+    // }
     
     if (!is_username_incorrect($result) && is_password_incorrect($password, $result['password'])) {
       $errors["login_input_incorrect"] = "Incorrect login info!";      
@@ -45,16 +49,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Create an entirely new ID which has the userId attached
     $newSessionId = session_create_id();
-    $sessionId = $newSessionId . "_" . $result["id"];
+    $sessionId = $newSessionId . "_" . $result["user_id"];
 
     // set session Id to the one we just created
     session_id($sessionId);
 
     // Add userId and username to session
-    $_SESSION["user_id"] = $result["id"];
+    $_SESSION["user_id"] = $result["user_id"];
     $_SESSION["username"] = htmlspecialchars($result["username"]);
-      // Reset session timer since I jsust added user_id and username to session
-    $_SESSION["last_regeneration"] = time();
+      // Reset session timer since I just added user_id and username to session
+    $_SESSION["previous_regeneration"] = time();
 
     // header("Location: ../login.php?login=success");
     header("Location: ../../profile.php");

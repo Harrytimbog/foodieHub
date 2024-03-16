@@ -9,18 +9,17 @@ function auth_inputs() {
       echo '<input type="text" class="person-icon" name="username" placeholder="Username" required>';
     }
 
-
     if (isset($_SESSION["signup_data"]["email"]) && !isset($_SESSION["signup_errors"]["email_used"]) && !isset($_SESSION["signup_errors"]["invalid_email"])) {
       echo '<input type="email" class="email-icon" name="email" placeholder="E-mail"  value="'. $_SESSION["signup_data"]["email"] .'" required>';
     } else {
       echo '<input type="email" class="email-icon" name="email" placeholder="E-mail" required>';
     }
 
-
     echo '<select name="role" id="role">
-      <option value="viewer">Viewer</option>
-      <option value="chef">Chef</option>
+        <option value="Viewer">Viewer</option>
+        <option value="Chef">Chef</option>
     </select>';
+
     echo '<input type="password" class="password-icon" name="password" placeholder="Password" required>';
 }
 

@@ -1,0 +1,63 @@
+:root {
+  --primary-color: #d8d8d8; /* Main background color */
+  --secondary-color: #1a62a8; /*  for texts */
+  --accent-color: #4ac5b1; /*  Primary accent */
+  --accent-color2: #337179; /* Secondary accent */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  color: #122db0;
+}
+
+img {
+  max-width: 100%;
+}
+
+footer {
+  padding: 2rem 1.2rem;
+  background-color: var(--accent-color);
+}
+
+footer p {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: white;
+}
+
+.social-links,
+.footer-links {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+}
+
+.footer-links li {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.footer-links a {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+}
+
+.footer-links a:hover {
+  opacity: 0.6;
+}
+
+.social-icon {
+  max-width: 70%;
+  color: #122db0;
+}
+
+.social-icon:hover {
+  opacity: 0.55;
+}

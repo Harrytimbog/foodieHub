@@ -1,9 +1,13 @@
 :root {
+  --primary-color: #d8d8d8; /* Main background color */
+  --secondary-color: #1a62a8; /*  for texts */
+  --accent-color: #4ac5b1; /*  Primary accent */
+  --accent-color2: #337179; /* Secondary accent */
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
+  margin: 0; /*  for texts */
   padding: 0;
 }
 
@@ -11,16 +15,57 @@ img {
   max-width: 100%;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  background: white;
+.container {
+  width: 90%;
+  margin: 0 auto;
+  /* border: 1px solid red; */
+  height: 100%;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.hero {
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url("/images/recipe01.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  /* border: 1px solid red; */
+  text-align: center;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.hero-content {
+  padding-top: 15.3rem;
+}
+
+.brand {
+  /* color: white; */
+  color: var(--secondary-color);
+}
+
+.hero-content h1 {
+  color: white;
+  font-size: 62px;
+}
+
+.hero-content p {
+  font-size: 24px;
+  margin-bottom: 62px;
+  color: white;
+  font-weight: bolder;
+}
+
+.explore-btn {
+  margin-top: 10px;
+  /* border: 2px solid red; */
+  padding: 1rem 2.3rem;
+  background: var(--accent-color2);
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.explore-btn:hover {
+  opacity: 0.7;
 }

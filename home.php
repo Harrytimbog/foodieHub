@@ -4,21 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FoodieHub | HomePage</title>
+  <link rel="stylesheet" href="css/homepage.css">
   <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
   <!-- NAVBAR -->
   <?php include("./components/navbar.php") ?>
-  <h1>Welcome to FoodieHub</h1>
+  
+  <!-- MAIN -->
+  <main class="hero">
+      <div class="container hero-content">
+        <h1>Welcome to <span class="brand">FoodieHub</span></h1>
+        <p>Discover and expore our huge selection of delicious recipes from around the World</p>
+        <a class="explore-btn" href="/recipes.php">Discover Recipes</a>
+      </div>
+  </main>
 
-  <ul>
-    <li><a href="/signup.php">Signup</a></li>
-    <li><a href="/login.php">Login</a></li>
-    <li><a href="/profile.php">Profile</a></li>
-  </ul>
-
+  <!-- FOOTER -->
   <?php 
-  echo "<h2>Session User ID: " . $_SESSION['user_id'] . "</h2>";
+   include("./components/footer.php")
   ?>
 </body>
 </html>

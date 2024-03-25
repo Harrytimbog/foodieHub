@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include("./includes/db_connection.php");
+include("./includes/utils/db_connection.php");
 
 try {
   // Check session for user_id

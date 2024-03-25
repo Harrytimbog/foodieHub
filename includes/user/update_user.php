@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   
   try {
     // GET form data
-    include("../db_connection.php");
+    include("../utils/db_connection.php");
     include("../utils/auth_check.php");
     $role = $_POST["role"];
 
@@ -26,8 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = $pdo->prepare($sql);
     $result->execute([$role, $_SESSION['user_id']]);
 
+
+    // Add user's role to SESSION
+    $_SESSION["role"] = $role;
     // Redirect to profile page on update
-    header("Location: ../../profile.php");
+    header("Location: ../../../../profile.php");
     exit; // Ensure no further code execution after redirection
   } catch (PDOException $e) {
     // Handle database errors

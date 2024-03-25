@@ -64,6 +64,7 @@ img {
   color: white;
   text-transform: uppercase;
   text-decoration: none;
+  border-radius: 8px;
 }
 
 .explore-btn:hover {

@@ -22,7 +22,10 @@
     <!-- categories -->
     
     <!-- Recipe List -->
-    
+    <?php 
+    include("./includes/utils/is_chef_or_admin.php");
+    echo '<a href="/create-recipe.php">Add Your Recipe</a>';
+    ?>
     <!-- FOOTER -->
   </main>
   <?php include("./components/footer.php") ?>

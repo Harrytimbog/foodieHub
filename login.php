@@ -3,8 +3,8 @@
 // Imports
 
 // require_once 'includes/db_connection.php';
-require_once "includes/session_config.php";
-require_once 'includes/login/login_view.inc.php';
+require_once "includes/utils/session_config.php";
+require_once 'views/login_view.inc.php';
 ?>
 
 
@@ -24,7 +24,7 @@ require_once 'includes/login/login_view.inc.php';
   <main class="login-page">
     <h3>Welcome Back to FoodieHub</h3>
     <form action="includes/login/login.inc.php" target="_self" method="post" autocomplete="on">
-      <input type="text" name="username" placeholder="Username" required size="50" autofocus><br>
+      <input type="email" name="email" placeholder="Email" required size="50" autofocus><br>
       <input type="password" name="password" placeholder="Password" required size="50" autofocus><br>
       <button>Login</button>
     </form>

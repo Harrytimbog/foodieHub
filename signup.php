@@ -1,6 +1,6 @@
 <?php 
-require_once "includes/session_config.php";
-require_once "includes/signup/signup_view.inc.php";
+require_once "includes/utils/session_config.php";
+require_once "views/signup_view.inc.php";
 ?>
 
 <!DOCTYPE html>

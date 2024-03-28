@@ -3,7 +3,10 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include database connection
     include("../utils/start_session.php");
-    require_once("../db_connection.php");
+    require_once("../utils/db_connection.php");
+    include("../../views/recipe_view.inc.php");
+    include("../../models/recipe_model.inc.php");
+    include("../../controllers/recipe_controller.inc.php");
 
     // Retrieve form data
     $title = $_POST["title"];
@@ -32,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         // Recipe added successfully
         // Redirect back to the page where the form was submitted
-        header("Location: " . $_SERVER['HTTP_REFERER'] . "?success=1");
+        // header("Location: " . $_SERVER['HTTP_HOST'] . "/recipes.php");
+        header("Location: ../../../../recipes.php");
         exit();
     } else {
         // Error occurred while adding the recipe

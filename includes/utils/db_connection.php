@@ -41,7 +41,17 @@ try {
     username VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    role ENUM('Viewer', 'Chef', 'Admin') NOT NULL
+    is_admin BOOLEAN DEFAULT FALSE,
+    role ENUM('Viewer', 'Chef') NOT NULL
+  )";
+
+  // Create Categories Table
+
+  $sql_categories = "CREATE TABLE IF NOT EXISTS Categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   )";
 
   // Create Recipes Table
@@ -53,9 +63,13 @@ try {
     ingredients TEXT,
     instructions TEXT,
     chef_id INT NOT NULL,
+    category_id INT NOT NULL,
+    address VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (chef_id) REFERENCES Users(user_id)
+    FOREIGN KEY (chef_id) REFERENCES Users(user_id),
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+
   )";
 
   // Create Favorites Table
@@ -75,7 +89,7 @@ try {
     comment_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     recipe_id INT NOT NULL,
-    comment TEXT,
+    description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (recipe_id) REFERENCES Recipes(recipe_id)
@@ -86,6 +100,7 @@ try {
 
 $pdo->exec($sql_db);
 $pdo->exec($sql_users);
+$pdo->exec($sql_categories);
 $pdo->exec($sql_recipes);
 $pdo->exec($sql_favorites);
 $pdo->exec($sql_comments);

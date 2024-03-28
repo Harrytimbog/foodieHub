@@ -19,7 +19,7 @@ try {
         echo "<ul>";
         foreach($users as $user) {
           if ($user['is_admin'] === 0 ) {
-            echo "<li style='text-align: center'><a href='user_details.php?username={$user['username']}'>{$user['username']}{$user['username']}</a>";
+            echo "<li style='text-align: center'><a href='user_details.php?username={$user['username']}'>{$user['username']}</a>";
             echo "<form action='../includes/admin/delete_user.php' method='post'>";
             echo "<input type='hidden' name='user_id' value='{$user['user_id']}'>";
             echo "<input type='submit' value='Delete' onclick='return confirm(\"Are you sure you want to delete this user?\");'>";

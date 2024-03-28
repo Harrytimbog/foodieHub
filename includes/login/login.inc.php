@@ -29,20 +29,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $errors["login_input_incorrect"] = "Incorrect email!";
     }
 
-    // if (is_password_incorrect($password, $result['password'])) {
-    //   $errors["login_input_incorrect"] = "Incorrect password!";
-    // }
-    
     if (!is_email_incorrect($result) && is_password_incorrect($password, $result['password'])) {
       $errors["login_input_incorrect"] = "Incorrect login info!";      
     }
 
     // Start session
     require_once '../utils/session_config.php'; // Because I created a safer way to start a session in this required file.
+    
     // Check errors array
     if ($errors) {
       $_SESSION["login_errors"] = $errors;
-
       header("Location: ../../../../login.php");
       die();
     }
@@ -52,18 +48,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $sessionId = $newSessionId . "_" . $result["user_id"];
 
     // set session Id to the one we just created
-    session_id($sessionId);
-
+    session_id($sessionId); // This line is causing the error
+    
     // Add userId, email and user's role to session
     $_SESSION["user_id"] = $result["user_id"];
     $_SESSION["email"] = htmlspecialchars($result["email"]);
-      // Reset session timer since I just added user_id and email to session
-    $_SESSION["previous_regeneration"] = time();
     $_SESSION["role"] = $result["role"];
+    $_SESSION["is_admin"] = $result["is_admin"];
+    $_SESSION["last_regeneration"] = time();
 
-    // header("Location: ../login.php?login=success");
     header("Location: ../../../../profile.php");
-
 
     // Close my Db Connections [Best practice]
     $pdo = null;
@@ -77,3 +71,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   header("Location: ../../../../login.php");
   die();
 }
+
+?>

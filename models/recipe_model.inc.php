@@ -3,7 +3,7 @@
 declare(strict_types= 1);
 
 // Get Recipe title From DB
-function get_email(object $pdo, string $title) {
+function get_recipe(object $pdo, string $title) {
   $query = "SELECT title FROM recipes WHERE title = :title";
   $statement = $pdo->prepare($query);
   $statement->bindParam(":title", $title);

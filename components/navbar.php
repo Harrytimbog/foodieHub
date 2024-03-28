@@ -2,13 +2,21 @@
 
 // Check session status (start one or use an existing one)
 
-include("./includes/utils/start_session.php");
+// include("./includes/utils/start_session.php");
+if (session_status() !== PHP_SESSION_ACTIVE) {
+  session_start();
+}
+
+// Check if user is an admin
+
+$isUserAdmin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === 1;
 
 // Check if the user is logged in
 $isUserLogged = isset($_SESSION['user_id']);
 
 // Set link dynamically
 $profileLink = $isUserLogged ? '<li><a href="../profile.php">Profile</a></li>' : "";
+$adminUserLink = $isUserAdmin ? '<li><a href="../admin-dashboard.php">Dashboard</a></li>' : "";
 $recipesLink = $isUserLogged ? '<li><a href="../recipes.php">Recipes</a></li>' : "";
 $loginLink = $isUserLogged ? "" : '<li><a href="../login.php">Login</a></li>';
 
@@ -24,6 +32,7 @@ $logoutLink = $isUserLogged ? '<li><a href="../includes/logout.inc.php">Logout</
     </a>
     <nav class="nav">
       <ul class="nav-links">
+        <?php echo $adminUserLink; ?>
         <li>
           <a href="../about.php">About</a>
         </li>

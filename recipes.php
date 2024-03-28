@@ -18,13 +18,15 @@
     
     <!-- brand | search bar -->
     
-    
     <!-- categories -->
     
     <!-- Recipe List -->
+    <ul>
+      <li></li>
+    </ul>
     <?php 
     include("./includes/utils/is_chef_or_admin.php");
-    echo '<a href="/create-recipe.php">Add Your Recipe</a>';
+    echo '<a href="/add-recipe.php">Add Your Recipe</a>';
     ?>
     <!-- FOOTER -->
   </main>

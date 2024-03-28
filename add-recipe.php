@@ -14,6 +14,8 @@
   <main style="height: 90vh;">
     <?php include("./components/recipe/new_recipe_form.php"); ?>
   </main>
+
+  <?php check_add_recipe_errors();  ?>
   <!-- FOOTER -->
   <?php include("./components/footer.php"); ?>
 </body>

@@ -16,7 +16,7 @@ require_once "views/signup_view.inc.php";
 </head>
 <body>
   <!-- NAVBAR -->
-  <?php include("./components/navbar.php") ?>
+  <?php include("./partials/navbar.php") ?>
   <main class="signup-page">
     <h1>Join FoodieHub: Your Culinary Adventure Begins Here</h1>
     <form action="includes/signup/signup.inc.php" method="POST">
@@ -33,7 +33,7 @@ require_once "views/signup_view.inc.php";
     <!-- FOOTER -->
     <a href="/">back home</a>
   </main>
-  <?php include("./components/footer.php") ?>
+  <?php include("./partials/footer.php") ?>
 </body>
 </html>
 

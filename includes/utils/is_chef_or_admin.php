@@ -5,7 +5,20 @@ include_once "../utils/db_connection.php";
 $user_id = $_SESSION['user_id'];
 
 
-if ($_SESSION["role"] !== 'Chef' && $_SESSION['role'] !== 'Admin') {
-  header("Location: restricted.php");
-  exit();
+try {
+  if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    $sql = $pdo->prepare("SELECT * FROM users WHERE user_id = ?");
+    $sql->execute([$user_id]);
+
+    $user = $sql->fetch(PDO::FETCH_ASSOC);
+    if ($user["role"] !== 'Chef' || $user['is_admin'] === 0) {
+      header("Location: restricted.php");
+      exit();
+    }
+  }
+} catch (PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
 }
+

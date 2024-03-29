@@ -10,7 +10,7 @@
 </head>
 <body>
   <!-- NAVBAR -->
-  <?php include("./components/navbar.php") ?>
+  <?php include("./partials/navbar.php") ?>
   
   <!-- MAIN -->
   <main class="hero">

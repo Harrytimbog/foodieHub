@@ -65,6 +65,7 @@ try {
     chef_id INT NOT NULL,
     category_id INT NOT NULL,
     address VARCHAR(255),
+    photo VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (chef_id) REFERENCES Users(user_id),

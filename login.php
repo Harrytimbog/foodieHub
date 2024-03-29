@@ -20,7 +20,7 @@ require_once 'views/login_view.inc.php';
 </head>
 <body>
   <!-- NAVBAR -->
-  <?php include("./components/navbar.php") ?>
+  <?php include("./partials/navbar.php") ?>
   <main class="login-page">
     <h3>Welcome Back to FoodieHub</h3>
     <form action="includes/login/login.inc.php" target="_self" method="post" autocomplete="on">
@@ -37,6 +37,6 @@ require_once 'views/login_view.inc.php';
     <!-- FOOTER -->
     <a href="/">back home</a>
   </main>
-  <?php include("./components/footer.php") ?>
+  <?php include("./partials/footer.php") ?>
 </body>
 </html>

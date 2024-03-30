@@ -11,7 +11,7 @@
 </head>
   <body>
     <!-- NAVBAR -->
-    <?php include("./components/navbar.php") ?>
+    <?php include("./partials/navbar.php") ?>
     <main class="profile-page">
       <h1>User Profile Page</h1>
       
@@ -20,7 +20,7 @@
       <a href="/">back home</a>
     </main>
     <!-- FOOTER -->
-  <?php include("./components/footer.php") ?>
+  <?php include("./partials/footer.php") ?>
 </body>
 
 </html>

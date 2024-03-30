@@ -1,0 +1,78 @@
+:root {
+  --primary-color: #d8d8d8; /* Main background color */
+  --secondary-color: #1a62a8; /*  for texts */
+  --accent-color: #4ac5b1; /*  Primary accent */
+  --accent-color2: #337179; /* Secondary accent */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.categories-page {
+  min-height: 80vh;
+}
+
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.categories-page h1,
+p {
+  text-align: center;
+}
+
+.category-bars {
+  /* border: 1px solid red; */
+  margin: 0 auto;
+}
+
+.category-list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.category {
+  border: 1px solid blue;
+  padding: 0.8rem 1.3rem;
+  border-radius: 8px;
+  margin: 8px;
+  background-color: white;
+  color: white;
+}
+
+.category a {
+  text-decoration: none;
+}
+
+.category a:hover,
+a:focus {
+  color: white;
+}
+
+.category:hover,
+.category:focus {
+  background-color: blue;
+  border: 1px solid white;
+}
+
+.action-buttons {
+  margin-top: 14px;
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.form-header {
+  color: var(--accent-color);
+}

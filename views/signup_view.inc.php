@@ -3,24 +3,37 @@
 declare(strict_types= 1);
 
 function auth_inputs() {
+    echo '<div class="mb-3">';
+    echo '<label for="username" class="form-label">Username</label>';
     if (isset($_SESSION["signup_data"]["username"]) && !isset($_SESSION["signup_errors"]["username_taken"])) {
-      echo '<input type="text" class="person-icon" name="username" placeholder="Username"  value="'. $_SESSION["signup_data"]["username"] .'" required>';
+        echo '<input type="text" name="username" class="form-control" id="username" placeholder="Username" value="'. $_SESSION["signup_data"]["username"] .'" required>';
     } else {
-      echo '<input type="text" class="person-icon" name="username" placeholder="Username" required>';
+        echo '<input type="text" name="username" class="form-control" id="username" placeholder="Username" required>';
     }
+    echo '</div>';
 
+    echo '<div class="mb-3">';
+    echo '<label for="email" class="form-label">Email address</label>';
     if (isset($_SESSION["signup_data"]["email"]) && !isset($_SESSION["signup_errors"]["email_used"]) && !isset($_SESSION["signup_errors"]["invalid_email"])) {
-      echo '<input type="email" class="email-icon" name="email" placeholder="E-mail"  value="'. $_SESSION["signup_data"]["email"] .'" required>';
+        echo '<input type="email" name="email" class="form-control" id="email" placeholder="E-mail" value="'. $_SESSION["signup_data"]["email"] .'" required>';
     } else {
-      echo '<input type="email" class="email-icon" name="email" placeholder="E-mail" required>';
+        echo '<input type="email" name="email" class="form-control" id="email" placeholder="E-mail" required>';
     }
+    echo '<div id="emailHelp" class="form-text">We\'ll never share your email with anyone else.</div>';
+    echo '</div>';
 
-    echo '<select name="role" id="role">
-        <option value="Viewer">Viewer</option>
-        <option value="Chef">Chef</option>
-    </select>';
+    echo '<div class="mb-3">';
+    echo '<label for="role" class="form-label">Role</label>';
+    echo '<select name="role" id="role" class="form-select">';
+    echo '<option value="Viewer" ' . (isset($_SESSION["signup_data"]["role"]) && $_SESSION["signup_data"]["role"] === "Viewer" ? 'selected' : '') . '>Viewer</option>';
+    echo '<option value="Chef" ' . (isset($_SESSION["signup_data"]["role"]) && $_SESSION["signup_data"]["role"] === "Chef" ? 'selected' : '') . '>Chef</option>';
+    echo '</select>';
+    echo '</div>';
 
-    echo '<input type="password" class="password-icon" name="password" placeholder="Password" required>';
+    echo '<div class="mb-3">';
+    echo '<label for="password" class="form-label">Password</label>';
+    echo '<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>';
+    echo '</div>';
 }
 
 function check_auth_errors() {

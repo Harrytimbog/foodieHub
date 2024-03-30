@@ -20,14 +20,15 @@ img {
 }
 
 footer {
+  margin-top: 10px;
   padding: 2rem 1.2rem;
-  background-color: var(--accent-color);
+  background-color: white;
 }
 
 footer p {
   text-align: center;
   margin-top: 1.5rem;
-  color: white;
+  color: var(--accent-color2);
 }
 
 .social-links,

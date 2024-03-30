@@ -31,16 +31,16 @@ try {
       </head>
       <body>
         <!-- Navbar -->
-        <?php include "./components/navbar.php";  ?>
+        <?php include "./partials/navbar.php";  ?>
 
         <!-- DASHBOARD -->
 
         <div style="height: 90vh">
-          <?php include "./components/admin/dashboard-component.php"; ?>
+          <?php include "./partials/admin/dashboard-component.php"; ?>
         </div>
         <!-- Footer -->
 
-        <?php include "./components/footer.php"; ?>
+        <?php include "./partials/footer.php"; ?>
       </body>
       </html>
       <?php

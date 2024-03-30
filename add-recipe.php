@@ -9,14 +9,17 @@
 </head>
 <body>
   <!-- NAVBAR  -->
-  <?php include("./components/navbar.php"); ?>
+  <?php include("./partials/navbar.php"); ?>
   <!-- Add Recipe Form  -->
   <main style="height: 90vh;">
-    <?php include("./components/recipe/new_recipe_form.php"); ?>
+    <?php
+    include("./includes/utils/db_connection.php");
+     include("./partials/recipe/new_recipe_form.php");
+    ?>
   </main>
 
   <?php check_add_recipe_errors();  ?>
   <!-- FOOTER -->
-  <?php include("./components/footer.php"); ?>
+  <?php include("./partials/footer.php"); ?>
 </body>
 </html>

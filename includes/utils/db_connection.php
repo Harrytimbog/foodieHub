@@ -41,6 +41,7 @@ try {
     username VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
+    photo VARCHAR(255) DEFAULT 'https://kitt.lewagon.com/placeholder/users/harrytimbog',
     is_admin BOOLEAN DEFAULT FALSE,
     role ENUM('Viewer', 'Chef') NOT NULL
   )";
@@ -65,6 +66,7 @@ try {
     chef_id INT NOT NULL,
     category_id INT NOT NULL,
     address VARCHAR(255),
+    photo VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (chef_id) REFERENCES Users(user_id),

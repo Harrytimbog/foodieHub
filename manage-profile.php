@@ -27,7 +27,7 @@ try {
       <body>
         <h1>Manage Account</h1>
         <?php         
-        include("./components/user/user-update-form.php");
+        include("./partials/user/user-update-form.php");
         ?>
       </body>
       </html>

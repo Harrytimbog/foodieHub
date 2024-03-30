@@ -11,12 +11,11 @@ try {
   if(empty($categories)) {
     echo "No Categories created yet";
   } else {
-    echo "<h3>Categories</h3>";
-    echo "<ul>";
+    echo "<div class='category-list'>";
     foreach ($categories as $category) {
-      echo "<li><a href='../../category.php?name={$category['name']}'>{$category['name']}</a></li>";
+      echo "<div class='category'><a href='../../category.php?name={$category['name']}'>{$category['name']}</a></div>";
     }
-    echo "</ul>";
+    echo "</div>";
   }
 } catch (PDOException $e) {
   // throw error

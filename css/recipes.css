@@ -16,5 +16,91 @@ img {
 }
 
 .recipe-page {
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.banner {
+  margin-top: 5px;
+  padding: 5.8rem 2.8rem;
+  text-align: center;
+  color: white;
+  /* background-image: url("../images/recipe04.avif"); */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/recipe04.avif");
+}
+
+.banner h1 {
+  color: white;
+  font-size: 3rem;
+}
+
+.banner p {
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* .container {
+  border: 1px solid yellow;
+} */
+
+.category-section {
+  margin-top: -3px;
+  /* border: 1px solid red; */
+}
+
+.recipes-section {
+  /* border: 1px solid blue; */
+}
+
+/* recip[e card */
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-img-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-img-container img {
+  width: 100%;
+  height: auto;
+}
+
+.card-recipe-user {
+  /* position: absolute;
+  right: 16px;
+  top: -20px; */
+  width: 40px;
+  border-radius: 50%;
+}
+
+.category-pill {
+  border: 1px solid white;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.6rem 0.8rem;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.category-pill a {
+  color: white;
+  text-decoration: none;
+}
+
+.category-header,
+.recipe-header,
+.recipe-owner-intro {
+  color: var(--accent-color2);
+}
+
+/* Action Buttons */
+
+.action-btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3rem;
 }

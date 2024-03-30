@@ -16,5 +16,24 @@ img {
 }
 
 .login-page {
-  height: 90vh;
+  min-height: 90vh;
 }
+
+.login-header {
+  color: var(--accent-color2);
+}
+
+/* .container {
+  border: 1px solid red;
+  max-width: 95%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+.form-content {
+  border: 1px solid red;
+}
+
+.bg-form {
+  background-image: url("../images/recipe03.avif");
+} */

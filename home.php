@@ -23,7 +23,7 @@
 
   <!-- FOOTER -->
   <?php 
-   include("./components/footer.php")
+   include("./partials/footer.php")
   ?>
 </body>
 </html>

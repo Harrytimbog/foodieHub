@@ -1,7 +1,7 @@
 
-<h3>Add New Category</h3>
+<h3 class="form-header">Add New Category</h3>
 <form action="../../includes/categories/add_category.inc.php" method="POST">
-  <label for="name">Name</label>
+  <label class="mb-2" for="name">Name</label><br>
   <input type="text" id="name" name="name" required ><br>
-  <button type="submit">Add Category</button>
+  <button type="submit" class="mt-2 btn btn-secondary">Add Category</button>
 </form>

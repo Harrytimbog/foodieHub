@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category_id = trim($category_id);
 
         // Handle file type
-    $fileName = $_FILES['photo']['name']; // Correct usage of $_FILES instead of $_POST
+    $fileName = $_FILES['photo']['name'];
     $fileTmpName = $_FILES['photo']['tmp_name'];
     $fileSize = $_FILES['photo']['size'];
     $fileErr = $_FILES['photo']['error'];

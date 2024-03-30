@@ -16,7 +16,7 @@ img {
 }
 
 .navbar {
-  background: var(--accent-color);
+  background: white;
 }
 
 .navbar-content {
@@ -56,7 +56,7 @@ img {
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
-  color: white;
+  color: var(--accent-color2);
   font-weight: bold;
 }
 
@@ -67,7 +67,11 @@ img {
 
 .nav-links a:hover {
   text-decoration: none;
-  color: var(--accent-color2);
+  background-color: var(--accent-color2);
+  color: white;
+  padding: 0.8rem 1.4rem;
+  border-radius: 5px;
+
   /* text-decoration-color: white; */
 }
 

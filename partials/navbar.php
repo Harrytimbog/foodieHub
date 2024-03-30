@@ -22,6 +22,12 @@ $loginLink = $isUserLogged ? "" : '<li><a href="../login.php">Login</a></li>';
 
 $registerLink = $isUserLogged ? "" : '<li><a href="../signup.php">Register</a></li>';
 $logoutLink = $isUserLogged ? '<li><a href="../includes/logout.inc.php">Logout</a></li>' : "";
+// Set profile picture
+if ($isUserLogged) {
+    $profilePicture = "<img id='user-avatar' src='./uploads/{$_SESSION['photo']}' alt='User' />";
+} else {
+    $profilePicture = "<img id='user-avatar' src='https://kitt.lewagon.com/placeholder/users/harrytimbog' alt='FoodieHub logo'>";
+}
 
 ?>
 <header class="navbar">
@@ -44,7 +50,9 @@ $logoutLink = $isUserLogged ? '<li><a href="../includes/logout.inc.php">Logout</
         <?php echo $profileLink; ?>
         <?php echo $recipesLink; ?>
         <?php echo $logoutLink; ?>
-        <img id="user-avatar" src="https://kitt.lewagon.com/placeholder/users/harrytimbog" alt="User">
+        <?php echo $profilePicture; ?>
+        <!-- <img id="user-avatar" src="https://kitt.lewagon.com/placeholder/users/harrytimbog" alt="User"> -->
+
       </ul>
       <img id="menu-btn" src="/images/icons/menu.png" alt="menu">
   </div>

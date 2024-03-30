@@ -41,6 +41,7 @@ try {
     username VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
+    photo VARCHAR(255) DEFAULT 'https://kitt.lewagon.com/placeholder/users/harrytimbog',
     is_admin BOOLEAN DEFAULT FALSE,
     role ENUM('Viewer', 'Chef') NOT NULL
   )";

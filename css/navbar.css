@@ -20,12 +20,12 @@ img {
 }
 
 .navbar-content {
-  width: 95%;
+  /* width: 80%; */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: 0.55rem;
+  padding-block: 0.7rem;
 }
 
 #logo {

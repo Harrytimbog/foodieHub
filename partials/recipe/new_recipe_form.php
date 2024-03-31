@@ -32,7 +32,7 @@
       echo '<p>No categories found</p>';
     }
    ?>
-  <button type="submit" class="btn btn-dark btn-lg mt-5">Add Recipes</button>
+  <button type="submit" class="btn btn-dark btn-lg mt-5">Add Recipe</button>
   <?php
     // print_r($_SERVER);
   ?>

@@ -17,7 +17,7 @@ $isUserLogged = isset($_SESSION['user_id']);
 // Set link dynamically
 $profileLink = $isUserLogged ? '<li><a href="../profile.php">Profile</a></li>' : "";
 $adminUserLink = $isUserAdmin ? '<li><a href="../admin-dashboard.php">Dashboard</a></li>' : "";
-$recipesLink = $isUserLogged ? '<li><a href="../recipes.php">Recipes</a></li>' : "";
+// $recipesLink = $isUserLogged ? '<li><a href="../recipes.php">Recipes</a></li>' : "";
 $loginLink = $isUserLogged ? "" : '<li><a href="../login.php">Login</a></li>';
 
 $registerLink = $isUserLogged ? "" : '<li><a href="../signup.php">Register</a></li>';
@@ -31,7 +31,7 @@ if ($isUserLogged) {
 
 ?>
 <header class="navbar">
-  <div class="navbar-content">
+  <div class="container navbar-content">
     <a href="/">
       <!-- <img id="logo" src="https://kitt.lewagon.com/placeholder/users/harrytimbog" alt="FoodieHub logo"> -->
       <h3 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">FoodieHub</h3>
@@ -43,15 +43,16 @@ if ($isUserLogged) {
           <a href="../about.php">About</a>
         </li>
         <li>
+          <a href="../recipes.php">Recipes</a>
+        </li>
+        <li>
           <a href="#">Contact us</a>
         </li>
         <?php echo $loginLink; ?>
         <?php echo $registerLink; ?>
         <?php echo $profileLink; ?>
-        <?php echo $recipesLink; ?>
         <?php echo $logoutLink; ?>
         <?php echo $profilePicture; ?>
-        <!-- <img id="user-avatar" src="https://kitt.lewagon.com/placeholder/users/harrytimbog" alt="User"> -->
 
       </ul>
       <img id="menu-btn" src="/images/icons/menu.png" alt="menu">

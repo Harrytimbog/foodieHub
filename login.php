@@ -5,6 +5,13 @@
 // require_once 'includes/db_connection.php';
 require_once "includes/utils/session_config.php";
 require_once 'views/login_view.inc.php';
+
+
+// Redirect logged in user away from login page
+if(isset($_SESSION['user_id'])) {
+  header("Location: home.php");
+  exit();
+}
 ?>
 
 

@@ -1,0 +1,52 @@
+:root {
+  --primary-color: #d8d8d8; /* Main background color */
+  --secondary-color: #1a62a8; /*  for texts */
+  --accent-color: #4ac5b1; /*  Primary accent */
+  --accent-color2: #337179; /* Secondary accent */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: var(--accent-color2);
+}
+
+img {
+  max-width: 100%;
+}
+
+.recipe-page {
+  min-height: 90vh;
+}
+
+.recipe-image {
+  width: 500px;
+  height: auto;
+}
+
+.recipe-category {
+  border: 1px solid var(--accent-color2);
+  padding: 0.5rem 1.2rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.recipe-category a {
+  color: var(--accent-color2);
+  text-decoration: none;
+}
+
+.recipe-category a:hover {
+  color: white;
+}
+
+.recipe-category:hover {
+  background-color: var(--accent-color2);
+  color: white;
+}
+
+.btn-danger {
+  margin-top: 5px;
+}

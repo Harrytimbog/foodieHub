@@ -67,15 +67,14 @@
             
             <?php 
               include "./includes/utils/db_connection.php";
-
-              $user_id = $_SESSION['user_id'];
-              $currentUserSql = "SELECT * FROM users where user_id = ?";
-              $statement = $pdo->prepare($currentUserSql);
-              $statement->execute([$user_id]);
-              $currentUser = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+              
               // Confirm that user is logged in and that user is an admin or a chef
               if (isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+                $currentUserSql = "SELECT * FROM users where user_id = ?";
+                $statement = $pdo->prepare($currentUserSql);
+                $statement->execute([$user_id]);
+                $currentUser = $statement->fetchAll(PDO::FETCH_ASSOC);
                 if ($_SESSION['is_admin'] === 1) {
                   echo '<a class="btn btn-dark" href="/add-category.php">Add Recipe Category</a> <br>';
                 }

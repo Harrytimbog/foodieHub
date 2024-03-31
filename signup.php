@@ -1,7 +1,14 @@
 <?php 
 require_once "includes/utils/session_config.php";
 require_once "views/signup_view.inc.php";
-?>
+
+
+  // Redirect logged in user away from signup page
+  if(isset($_SESSION['user_id'])) {
+    header("Location: home.php");
+    exit();
+  }
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">

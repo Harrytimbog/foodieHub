@@ -57,6 +57,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       echo "<p>You cannot upload files of this type!</p>";
     }
 
+    // Handle Error
+
+    $errors = [];
+
+    if (is_input_empty($title, $description, $ingredients, $instructions, $address, $photo)) {
+      $errors["empty_input"] = "Fill in all fields!";
+    }
+
+    if (is_title_taken($pdo, $title)) {
+      $errors["title_taken"] = "Recipe already taken";
+    }
+
 
     // Prepare the SQL statement
     $sql = "INSERT INTO Recipes (title, description, ingredients, instructions, chef_id, address, photo, category_id) VALUES (:title, :description, :ingredients, :instructions, :chef_id, :address, :photo, :category_id)";

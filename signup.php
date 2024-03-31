@@ -26,8 +26,8 @@ require_once "views/signup_view.inc.php";
           <h2 class="mt-5 signup-header">Join FoodieHub: Your Culinary Adventure Begins Here</h2>
           <form action="includes/signup/signup.inc.php" method="POST">
             <?php 
-        auth_inputs();
-        ?>
+            auth_inputs();
+            ?>
 
         <button class="btn btn-primary btn-lg">sign up</button>
         </form>

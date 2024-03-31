@@ -81,7 +81,7 @@ if (isset($_GET["title"])) {
               if ($_SESSION['user_id'] === $recipe['chef_id'] || $_SESSION['is_admin'] === 1) {
                 echo '<a class="btn btn-secondary" href="edit-recipe.php?title=' . urlencode($recipe["title"]) . '">Edit Recipe</a>';
 
-                echo "<form action='' method='post'>";
+                echo "<form action='./includes/recipes/delete_recipe.inc.php' method='post'>";
                 echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}'>";
                 echo "<input type='submit' class='btn btn-danger' value='Delete Recipe' onclick='return confirm(\"Are you sure you want to delete this recipe?\");'>";
                 echo "</form>";

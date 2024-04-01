@@ -11,10 +11,18 @@
   padding: 0;
 }
 
+body {
+  text-align: center;
+}
+
 img {
   max-width: 100%;
 }
 
 .about-us {
   height: 100vh;
+}
+
+.about-header {
+  color: var(--accent-color2);
 }

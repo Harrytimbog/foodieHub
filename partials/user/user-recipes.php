@@ -11,7 +11,7 @@ try {
   if(empty($recipes)) {
     echo "No Recipes created yet";
   } else {
-    echo "<h3 class='recipe-header text-center mt-5'>Recipes</h3>";
+    echo "<h3 class='recipe-header text-center mt-5'>My Recipe Collections</h3>";
     echo "<div class='row row-cols-1 row-cols-md-3 g-4'>";
     foreach ($recipes as $recipe) {
       $recipeOwnerId = $recipe['chef_id'];

@@ -11,6 +11,8 @@ include "./includes/utils/db_connection.php";
 
 
 try {
+
+  // Find the user_id from the session
   if (isset($_SESSION['user_id'])) {
 
     $user_id = $_SESSION['user_id'];

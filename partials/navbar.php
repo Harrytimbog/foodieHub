@@ -46,7 +46,7 @@ if ($isUserLogged) {
           <a href="../recipes.php">Recipes</a>
         </li>
         <li>
-          <a href="#">Contact us</a>
+          <a href="../contact-us.php">Contact us</a>
         </li>
         <?php echo $loginLink; ?>
         <?php echo $registerLink; ?>

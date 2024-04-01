@@ -32,9 +32,9 @@ if ($isUserLogged) {
 ?>
 <header class="navbar">
   <div class="container navbar-content">
-    <a href="/">
+    <a href="/" id="logo">
       <!-- <img id="logo" src="https://kitt.lewagon.com/placeholder/users/harrytimbog" alt="FoodieHub logo"> -->
-      <h3 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">FoodieHub</h3>
+      <h3  style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">FoodieHub</h3>
     </a>
     <nav class="nav">
       <ul class="nav-links">

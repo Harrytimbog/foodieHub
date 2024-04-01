@@ -44,7 +44,7 @@
           <h2 class="about-header">Our Mission</h2>
           <p>At FoodieHub, our mission is simple: to inspire and empower food lovers like you to discover new recipes,
             organize your favorites, and share your passion for cooking with others. We believe that food has the power
-            to bring people together, spark creativity, and create unforgettable memories. Our goal is to provide you
+            to bring people together, spark creativity, and create unforgettable memories. Our aim is to provide you
             with the tools and resources you need to unleash your inner chef and embark on culinary adventures that
             delight your taste buds and nourish your soul.</p>
         </div>

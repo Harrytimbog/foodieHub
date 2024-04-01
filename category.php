@@ -31,7 +31,7 @@ if (isset($_GET["name"])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FoodieHub | <?php $category['name']; ?></title>
+  <title>FoodieHub | <?php echo $category['name']; ?></title>
 </head>
 <body>
   <h1><?php $category['name'];  ?></h1>

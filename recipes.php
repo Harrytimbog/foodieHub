@@ -23,7 +23,36 @@
       </div>
       <!-- brand | search bar -->
 
-      
+      <!-- Filter Form -->
+    <div class="row justify-content-center mt-4">
+      <form class="form-inline" method="GET" action="">
+        <div class="d-flex">
+          <div class="form-group mx-sm-3 mb-2">
+            <!-- <label for="inputAddress" class="sr-only">Address</label> -->
+            <input type="text" class="form-control" id="inputAddress" name="address" placeholder="Address">
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <!-- <label for="inputCategory" class="sr-only">Category</label> -->
+            <select class="form-select" id="inputCategory" name="category">
+              <option selected disabled>Choose Category</option>
+              <?php
+                // Fetch and display categories
+                include "./includes/utils/db_connection.php";
+                $fetch_categories = "SELECT * FROM Categories";
+                $statement = $pdo->prepare($fetch_categories);
+                $statement->execute();
+                $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($categories as $category) {
+                  echo "<option value='{$category['category_id']}'>{$category['name']}</option>";
+                }
+              ?>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Filter</button>
+        </div>
+      </form>
+    </div>
+
       
       <div class="row recipe-content">
 

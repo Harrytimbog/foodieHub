@@ -9,30 +9,36 @@ include("./includes/utils/db_connection.php");
 if (isset($_GET["title"])) {
   $recipe_title = $_GET["title"];
 
-
   // Fetch the recipe with this title from the database
-
   $sql_recipe = $pdo->prepare("SELECT * FROM Recipes WHERE title = ?");
   $sql_recipe->execute([$recipe_title]);
   $recipe = $sql_recipe->fetch(PDO::FETCH_ASSOC);
-
   
   if (!$recipe) {
     die('Recipe not Found');
   }
 
   // Fetch Category for this recipe
-
   $sql_recipe_category = $pdo->prepare("SELECT * FROM Categories WHERE category_id = ?");
   $sql_recipe_category->execute([$recipe['category_id']]);
   $category = $sql_recipe_category->fetch(PDO::FETCH_ASSOC);
 
   // Fetch Chef for this recipe
-
   $sql_recipe_chef = $pdo->prepare("SELECT * FROM Users WHERE user_id = ?");
   $sql_recipe_chef->execute([$recipe['chef_id']]);
   $chef = $sql_recipe_chef->fetch(PDO::FETCH_ASSOC);
 
+  // Check if the recipe is already in the user's favorites
+  include "./includes/utils/start_session.php";
+  if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    $sql_check_favorite = $pdo->prepare("SELECT * FROM Favorites WHERE user_id = ? AND recipe_id = ?");
+    $sql_check_favorite->execute([$user_id, $recipe['recipe_id']]);
+    $is_favorite = $sql_check_favorite->fetch(PDO::FETCH_ASSOC);
+} else {
+  $is_favorite = false;
+}
 } else {
   header("Location: error.php");
 }
@@ -57,7 +63,6 @@ if (isset($_GET["title"])) {
   <div class="recipe-page">
     <div class="container">
       <div class="row justify-content-center">
-        <!-- <h1 class='text-center'><?php echo $recipe['title'];  ?></h1> -->
         <div class="col-5">
           <div class="recipe-image">
             <img src="./uploads/<?php echo $recipe['photo']; ?>" alt=<?php echo $recipe['title'];  ?>>
@@ -73,25 +78,28 @@ if (isset($_GET["title"])) {
 
               <p>Address: <?php echo $recipe["address"]; ?></p>
               <p>Created on: <?php echo date("F j, Y, g:i a", strtotime($recipe["created_at"])); ?></p>
-              <p><?php // print_r($recipe) ?></p>
           </div>
-          <?php 
-            include "./includes/utils/start_session.php";
-            if (isset($_SESSION['user_id'])) {
-              if ($_SESSION['user_id'] === $recipe['chef_id'] || $_SESSION['is_admin'] === 1) {
-                echo '<a class="btn btn-secondary" href="edit-recipe.php?title=' . urlencode($recipe["title"]) . '">Edit Recipe</a>';
 
-                echo "<form action='./includes/recipes/delete_recipe.inc.php' method='post'>";
-                echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}'>";
-                echo "<input type='submit' class='btn btn-danger' value='Delete Recipe' onclick='return confirm(\"Are you sure you want to delete this recipe?\");'>";
+          <?php 
+            if (isset($_SESSION['user_id'])) {
+              if ($is_favorite) {
+                // If the recipe is already in favorites, display "Remove From Favorites" button
+                echo "<form action='./includes/favorites/remove_from_favorites.inc.php' method='POST'>";
+                echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}' />";
+                echo "<button type='submit' name='remove_from_favorites' class='btn btn-danger'>Remove From Favorites</button>";
+                echo "</form>";
+              } else {
+                // If the recipe is not in favorites, display "Add To Favorites" button
+                echo "<form action='./includes/favorites/add_to_favorites.inc.php' method='POST'>";
+                echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}' />";
+                echo "<button type='submit' name='add_to_favorites' class='btn btn-dark'>Add To Favorites</button>";
                 echo "</form>";
               }
-
             }
           ?>
         </div>
-
       </div>
+      <a href="/recipes.php">Back</a>
     </div>
   </div>
   <!-- FOOTER -->

@@ -76,12 +76,22 @@ if (isset($_GET["title"])) {
               <p>Chef: <?php echo $chef["username"]; ?></p>
               <p>Category: <span class='recipe-category'><a href='./category.php?name=<?php echo urlencode($category["name"]); ?>'><?php echo htmlspecialchars($category["name"]); ?></a></span></p>
 
-              <p>Address: <?php echo $recipe["address"]; ?></p>
+              <p>location: <?php echo $recipe["location"]; ?></p>
               <p>Created on: <?php echo date("F j, Y, g:i a", strtotime($recipe["created_at"])); ?></p>
-          </div>
+            </div>
+            
+            <?php 
 
-          <?php 
             if (isset($_SESSION['user_id'])) {
+              if ($_SESSION['is_admin'] === 1 || $_SESSION['user_id'] === $chef['user_id']) {
+                  echo "<div class='action-btns'>";
+                  echo "<a href='./edit-recipe.php?title={$recipe['title']}' class='btn btn-secondary'>Edit Recipe</a>";
+                  echo "<form action='./includes/recipes/delete_recipe.inc.php' method='POST'>";
+                  echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}'>";
+                  echo "<button type='submit' class='btn btn-danger'>Delete Recipe</button>";
+                  echo "</form>";
+                  echo "</div>";
+              }
               if ($is_favorite) {
                 // If the recipe is already in favorites, display "Remove From Favorites" button
                 echo "<form action='./includes/favorites/remove_from_favorites.inc.php' method='POST'>";
@@ -92,19 +102,27 @@ if (isset($_GET["title"])) {
                 // If the recipe is not in favorites, display "Add To Favorites" button
                 echo "<form action='./includes/favorites/add_to_favorites.inc.php' method='POST'>";
                 echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}' />";
-                echo "<button type='submit' name='add_to_favorites' class='btn btn-dark'>Add To Favorites</button>";
+                echo "<button type='submit' name='add_to_favorites' class='btn btn-dark mt-5'>Add To Favorites</button>";
                 echo "</form>";
               }
             }
+
+
+
           ?>
         </div>
       </div>
       <a href="/recipes.php">Back</a>
+
+    </div>
+    <div id="map">
+
     </div>
   </div>
   <!-- FOOTER -->
   <?php include("./partials/footer.php") ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>

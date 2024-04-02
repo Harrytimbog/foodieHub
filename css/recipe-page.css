@@ -47,6 +47,12 @@ img {
   color: white;
 }
 
-.btn-danger {
-  margin-top: 5px;
+.action-btns {
+  display: flex;
+  gap: 6px;
+}
+
+#map {
+  height: 500px;
+  width: 100%;
 }

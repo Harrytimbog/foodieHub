@@ -5,8 +5,8 @@ try {
   $fetch_recipes = "SELECT * FROM Recipes";
   
   // Check if there are any filters applied
-  if (isset($_GET['address']) && $_GET['address'] != '') {
-    $fetch_recipes .= " WHERE address LIKE '%{$_GET['address']}%'";
+  if (isset($_GET['location']) && $_GET['location'] != '') {
+    $fetch_recipes .= " WHERE location LIKE '%{$_GET['location']}%'";
   }
   if (isset($_GET['category']) && $_GET['category'] != 'Choose Category') {
     $category_id = $_GET['category'];
@@ -23,7 +23,7 @@ try {
 
   // Display the list of Recipes
   if(empty($recipes)) {
-    echo "No Recipes found";
+    echo "<h1 class='text-center mt-5'>No Recipes found</h1>";
   } else {
     echo "<h3 class='recipe-header text-center mt-5'>Recipes</h3>";
     echo "<div class='row row-cols-1 row-cols-md-3 g-4'>";

@@ -37,7 +37,7 @@ if(isset($_SESSION['user_id'])) {
           <h2 class="mt-5 login-header">Welcome Back to FoodieHub</h2>
           <form action="includes/login/login.inc.php" target="_self" method="post" autocomplete="on">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <label for="exampleInputEmail1" class="form-label">Email location</label>
             <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
           </div>

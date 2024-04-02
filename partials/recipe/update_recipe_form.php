@@ -13,8 +13,8 @@
   <textarea id="instructions" name="instructions" class="form-control" rows="4" cols="50"><?php echo $recipe['instructions'] ?></textarea><br>
   <label for="photo" class="form-label">Photo</label>
   <input type="file" id="photo" class="form-control" name="photo" required ><br>
-  <label for="address" class="form-label">Address</label>
-  <input type="text" class="form-control" id="address" name="address" value="<?php echo $recipe['address'] ?>" required ><br>
+  <label for="location" class="form-label">location</label>
+  <input type="text" class="form-control" id="location" name="location" value="<?php echo $recipe['location'] ?>" required ><br>
   <?php 
     // Fetch categories from database
 

@@ -13,7 +13,7 @@ function auth_inputs() {
     echo '</div>';
 
     echo '<div class="mb-3">';
-    echo '<label for="email" class="form-label">Email address</label>';
+    echo '<label for="email" class="form-label">Email location</label>';
     if (isset($_SESSION["signup_data"]["email"]) && !isset($_SESSION["signup_errors"]["email_used"]) && !isset($_SESSION["signup_errors"]["invalid_email"])) {
         echo '<input type="email" name="email" class="form-control" id="email" placeholder="E-mail" value="'. $_SESSION["signup_data"]["email"] .'" required>';
     } else {

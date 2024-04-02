@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $description = $_POST["description"];
     $ingredients = $_POST["ingredients"];
     $instructions = $_POST["instructions"];
-    $address = $_POST["address"];
+    $location = $_POST["location"];
     $category_id = $_POST["category_id"];
     // $photo = $_POST["photo"]; // Remove this line
 
@@ -59,10 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Write the SQL Script to update to database
 
-    $sql = "UPDATE Recipes SET title = ?, description = ?, ingredients = ?, instructions = ?, address = ?, category_id = ?, photo = ? WHERE recipe_id = ?";
+    $sql = "UPDATE Recipes SET title = ?, description = ?, ingredients = ?, instructions = ?, location = ?, category_id = ?, photo = ? WHERE recipe_id = ?";
 
     $result = $pdo->prepare($sql);
-    $result->execute([$title, $description, $ingredients, $instructions, $address, $category_id, $photo, $recipe_id]);
+    $result->execute([$title, $description, $ingredients, $instructions, $location, $category_id, $photo, $recipe_id]);
 
     header("Location: ../../../../profile.php");
     exit; // Ensure no further code execution after redirection

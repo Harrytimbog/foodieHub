@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST["description"];
     $ingredients = $_POST["ingredients"];
     $instructions = $_POST["instructions"];
-    $address = $_POST["address"];
+    $location = $_POST["location"];
     $photo = $_POST["photo"];
     $category_id = $_POST["category_id"];
 
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = trim($description);
     $ingredients = trim($ingredients);
     $instructions = trim($instructions);
-    $address = trim($address);
+    $location = trim($location);
     $category_id = trim($category_id);
 
         // Handle file type
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $errors = [];
 
-    if (is_input_empty($title, $description, $ingredients, $instructions, $address, $photo)) {
+    if (is_input_empty($title, $description, $ingredients, $instructions, $location, $photo)) {
       $errors["empty_input"] = "Fill in all fields!";
     }
 
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Prepare the SQL statement
-    $sql = "INSERT INTO Recipes (title, description, ingredients, instructions, chef_id, address, photo, category_id) VALUES (:title, :description, :ingredients, :instructions, :chef_id, :address, :photo, :category_id)";
+    $sql = "INSERT INTO Recipes (title, description, ingredients, instructions, chef_id, location, photo, category_id) VALUES (:title, :description, :ingredients, :instructions, :chef_id, :location, :photo, :category_id)";
     $stmt = $pdo->prepare($sql);
 
     // Bind parameters
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(':ingredients', $ingredients, PDO::PARAM_STR);
     $stmt->bindParam(':instructions', $instructions, PDO::PARAM_STR);
     $stmt->bindParam(':chef_id', $_SESSION['user_id'], PDO::PARAM_INT);
-    $stmt->bindParam(':address', $address, PDO::PARAM_STR);
+    $stmt->bindParam(':location', $location, PDO::PARAM_STR);
     $stmt->bindParam(':photo', $photo, PDO::PARAM_STR);
     $stmt->bindParam(':category_id', $category_id, PDO::PARAM_STR);
 

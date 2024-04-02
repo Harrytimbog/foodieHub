@@ -28,8 +28,8 @@
       <form class="form-inline" method="GET" action="">
         <div class="d-flex">
           <div class="form-group mx-sm-3 mb-2">
-            <!-- <label for="inputAddress" class="sr-only">Address</label> -->
-            <input type="text" class="form-control" id="inputAddress" name="address" placeholder="Address">
+            <!-- <label for="inputlocation" class="sr-only">location</label> -->
+            <input type="text" class="form-control" id="inputlocation" name="location" placeholder="location">
           </div>
           <div class="form-group mx-sm-3 mb-2">
             <!-- <label for="inputCategory" class="sr-only">Category</label> -->

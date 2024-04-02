@@ -7,6 +7,11 @@
       $recipe_id = $_POST['recipe_id'];
 
       try {
+
+          // Delete associated records from Favorites table
+          $delete_favorites_stmt = $pdo->prepare("DELETE FROM Favorites WHERE recipe_id = ?");
+          $delete_favorites_stmt->execute([$recipe_id]);
+
           $delete_recipe_script = "DELETE FROM Recipes WHERE recipe_id = ?";
           $delete_recipe_stmt = $pdo->prepare($delete_recipe_script);
           $delete_recipe_stmt->execute([$recipe_id]);

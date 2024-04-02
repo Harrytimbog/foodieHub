@@ -47,7 +47,7 @@
           <ul class="list-unstyled">
             <li><strong>Email:</strong> info@foodiehub.com</li>
             <li><strong>Phone:</strong> +1 (123) 456-7890</li>
-            <li><strong>Address:</strong> 123 Main Street, City, Country</li>
+            <li><strong>location:</strong> 123 Main Street, City, Country</li>
           </ul>
         </div>
       </div>

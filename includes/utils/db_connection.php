@@ -1,25 +1,23 @@
 <?php 
 
+require_once realpath(__DIR__ . "/../../vendor/autoload.php");
+
+
+use Dotenv\Dotenv;
+
+// Load the .env file from the root folder
+$dotenv = Dotenv::createImmutable(dirname(__DIR__ . "/../../.env"));
+$dotenv->load();
+
+// Access environmental variables
+$googleMapApiKey = $_ENV["GOOGLE_MAP_API"];
+$db_servername = $_ENV['DB_SERVERNAME'];
+$db_username = $_ENV['DB_USERNAME'];
+$db_password = $_ENV['DB_PASSWORD']; 
+$db_name = $_ENV['DB_NAME'];
+
+
 try {
-  // Database connection credentials
-  $db_servername = "localhost";
-  $db_username = "root";
-  $db_password = "PeerPal"; 
-  $db_name = "FoodieHub";
-
-  // Import load_dotenv
-
-  // require_once("load_dotenv.php");
-  // $db_servername = $_ENV['DB_SERVERNAME'];
-  // $db_username = $_ENV['DB_USERNAME'];
-  // $db_password = $_ENV['DB_PASSWORD']; 
-  // $db_name = $_ENV['DB_NAME'];
-
-
-  // echo "<p> " .$db_servername. "</p>";
-  // echo "<p> " .$db_username. "</p>";
-  // echo "<p> " .$db_password. "</p>";
-  // echo "<p> " .  $db_name. "</p>";
 
   // connect database
 

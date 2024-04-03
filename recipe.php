@@ -1,5 +1,17 @@
 <?php 
 
+require_once realpath(__DIR__ . "/vendor/autoload.php");
+
+use Dotenv\Dotenv;
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$googleMapApiKey = $_ENV["GOOGLE_MAP_API"];
+
+// echo $googleMapApiKey;
+
+
 // imports
 
 include("./includes/utils/db_connection.php");
@@ -123,6 +135,20 @@ if (isset($_GET["title"])) {
   <?php include("./partials/footer.php") ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    function initMap() {
+      var location = {lat: -25.363, lng: 131.044}
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: location
+      });
 
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map
+      });
+    }
+  </script>    
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $googleMapApiKey; ?>&callback=initMap"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ try {
     // find user from the database
     $user_id = $_SESSION['user_id'];
     // To avoid sql injection
-    $statement = $pdo->prepare("SELECT * FROM users WHERE user_id = ?");
+    $statement = $pdo->prepare("SELECT * FROM Users WHERE user_id = ?");
     $statement->execute([$user_id]);
     // execute task
     $user = $statement->fetch(PDO::FETCH_ASSOC);

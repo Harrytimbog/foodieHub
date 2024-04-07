@@ -3,7 +3,7 @@
 declare(strict_types= 1);
 
 function find_user(object $pdo, string $email) {
-  $query = "SELECT * FROM users WHERE email = :email";
+  $query = "SELECT * FROM Users WHERE email = :email";
   $statement = $pdo->prepare($query);
   $statement->bindParam(":email", $email);
   $statement->execute();

@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $newPassword = $_POST['new_password'];
 
     // Check if the email exists in the database
-    $sql_email_exists = $pdo->prepare("SELECT user_id FROM users WHERE email = ? LIMIT 1");
+    $sql_email_exists = $pdo->prepare("SELECT user_id FROM Users WHERE email = ? LIMIT 1");
     $sql_email_exists->execute([$email]);
     $row = $sql_email_exists->fetch(PDO::FETCH_ASSOC);
 

@@ -104,7 +104,7 @@
               // Confirm that user is logged in and that user is an admin or a chef
               if (isset($_SESSION['user_id'])) {
                 $user_id = $_SESSION['user_id'];
-                $currentUserSql = "SELECT * FROM users where user_id = ?";
+                $currentUserSql = "SELECT * FROM Users where user_id = ?";
                 $statement = $pdo->prepare($currentUserSql);
                 $statement->execute([$user_id]);
                 $currentUser = $statement->fetchAll(PDO::FETCH_ASSOC);

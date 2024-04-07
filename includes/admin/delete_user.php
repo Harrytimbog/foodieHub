@@ -7,7 +7,7 @@ if (isset($_POST['user_id']) && !empty($_POST['user_id'])) {
     $user_id = $_POST['user_id'];
 
     try {
-        $delete_user_sql = "DELETE FROM users WHERE user_id = ?";
+        $delete_user_sql = "DELETE FROM Users WHERE user_id = ?";
         $delete_user_stmt = $pdo->prepare($delete_user_sql);
         $delete_user_stmt->execute([$user_id]);
 

@@ -9,7 +9,7 @@ try {
     $user_id = $_SESSION['user_id'];
 
     // Fetch the user from the database
-    $sql_statement = $pdo->prepare("SELECT * FROM users WHERE user_id = ?");
+    $sql_statement = $pdo->prepare("SELECT * FROM Users WHERE user_id = ?");
     $sql_statement->execute([$user_id]);
     $user = $sql_statement->fetch(PDO::FETCH_ASSOC);
     

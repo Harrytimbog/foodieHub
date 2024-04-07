@@ -11,7 +11,7 @@ try {
         $username = $_GET['username'];
 
         // Find user with username from the database
-        $sql_statement = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $sql_statement = $pdo->prepare("SELECT * FROM Users WHERE username = ?");
         $sql_statement->execute([$username]);
         $user = $sql_statement->fetch(PDO::FETCH_ASSOC);
 

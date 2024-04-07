@@ -32,3 +32,7 @@ img {
   justify-content: center;
   gap: 5px;
 }
+
+.manage-profile {
+  min-height: 80vh;
+}

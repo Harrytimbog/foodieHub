@@ -48,7 +48,7 @@ try {
   //////////////////////////////////////// Start Creating Tables ////////////////////////////////////////////
   // CREATE DATABASE
 
-  // $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
+  $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
 
   // Create Users Table
 
@@ -125,6 +125,7 @@ $pdo->exec($sql_comments);
 
 // echo "Tables created successfully";
 // echo "<p>Tables created successfully<p>";
+
 ////////////////////////////////////////////// Finished Creating Table //////////////////////////////////////
 } catch (PDOException $e) {
   echo "Error occured while creating tables " . $e->getMessage();

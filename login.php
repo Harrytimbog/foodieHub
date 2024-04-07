@@ -52,6 +52,7 @@ if(isset($_SESSION['user_id'])) {
           <button type="submit" class="btn btn-primary btn-lg">Login</button>
         </form>
         <p>Are you new here? <a href="/signup.php">create an account</a></p>
+        <p>Forgot Password? <a href="/password-reset.php">Reset Password</a></p>
         
         <?php 
         

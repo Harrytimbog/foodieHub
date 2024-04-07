@@ -53,7 +53,7 @@
       </form>
     </div>
 
-      
+      <?php // echo sizeof($category) ?>
       <div class="row recipe-content">
 
         <!-- categories -->

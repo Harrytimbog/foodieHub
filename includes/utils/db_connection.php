@@ -48,7 +48,7 @@ try {
   //////////////////////////////////////// Start Creating Tables ////////////////////////////////////////////
   // CREATE DATABASE
 
-  $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
+  // $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
 
   // Create Users Table
 
@@ -116,7 +116,7 @@ try {
 
 // Execute SQL commands
 
-$pdo->exec($sql_db);
+#$pdo->exec($sql_db);
 $pdo->exec($sql_users);
 $pdo->exec($sql_categories);
 $pdo->exec($sql_recipes);

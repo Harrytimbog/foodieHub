@@ -48,7 +48,7 @@ try {
   //////////////////////////////////////// Start Creating Tables ////////////////////////////////////////////
   // CREATE DATABASE
 
-  $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
+  // $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
 
   // Create Users Table
 

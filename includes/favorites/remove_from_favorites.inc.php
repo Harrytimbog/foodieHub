@@ -45,5 +45,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } else {
     // Redirect user to error page if form is not submitted via POST method
     header("Location: /error.php");
-    exit(); // Terminate script
+    exit();
 }

@@ -30,7 +30,7 @@ try {
   }
 } catch (PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
-  exit(); // Terminate script if the database connection fails
+  exit(); // This terminate script runs if my database connection fails
 }
 
 ?>

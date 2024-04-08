@@ -36,6 +36,6 @@ try {
     echo "</div>";
   }
 } catch (PDOException $e) {
-  // throw error
+  // throw error if any
   echo "<h3>Something went wrong</h3> " . $e->getMessage();
 }

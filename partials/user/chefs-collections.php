@@ -1,7 +1,7 @@
 <?php 
 
 try {
-  // fetch Recipes
+  // fetch Recipes owned by chef
 
 
   
@@ -17,13 +17,6 @@ try {
     echo "<h3 class='recipe-header text-center mt-5'> {$user['username']}'s Collections</h3>";
     echo "<div class='row row-cols-1 row-cols-md-3 g-4'>";
     foreach ($recipes as $recipe) {
-      // $chefId = $recipe['chef_id'];
-      // $chefSql = "SELECT * FROM users where user_id = ?";
-      // $statement = $pdo->prepare($chefSql);
-      // $statement->execute([$chefId]);
-      // $chef = $statement->fetchAll(PDO::FETCH_ASSOC);
-      // print_r($chef[0]);
-      // echo $chef['photo'];
       echo "<div class='col'>";
         echo "<div class='card'>";
           echo "<div class='card-img-container'>";

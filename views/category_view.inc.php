@@ -11,7 +11,7 @@ function check_add_category_errors() {
       echo '<p>' . $error . '</p>';
     }
 
-    // Delete this errors from session because it isn't needed anymore
+    // The errors in session has to be deleted because it isn't needed anymore
     unset($_SESSION['category_errors']);
   } else if (isset($_GET["category"]) && $_GET["category"] === "success") {
     // echo '<br>';

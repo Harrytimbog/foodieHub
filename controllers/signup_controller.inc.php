@@ -31,7 +31,7 @@ function is_username_taken(object $pdo, string $username) {
   }
 }
 
-// Validate email uniqueness
+////////////////////////// Validate email uniqueness ///////////
 function is_email_registered(object $pdo, string $email) {
   // get username from the db via the model
   if (find_user_email($pdo, $email)){

@@ -29,7 +29,6 @@ try {
     // connect database
     $pdo = new PDO("mysql:host=$db_servername;dbname=$db_name", $db_username, $db_password);
 
-    // Set PDO ERROR MODE TO EXCEPTION
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Delete data from tables

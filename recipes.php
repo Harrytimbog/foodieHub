@@ -80,7 +80,14 @@
               echo "<div class='categories col'>";
               echo "<h3 class='mt-5 text-center category-header'>Categories</h3>";
               foreach ($categories as $category) {
-                echo "<div class='category-pill'><a href='../../category.php?name={$category['name']}'>{$category['name']}</a></div>";
+                // fetch recipes in this category
+                $id = $category['category_id'];
+                $fetch_recipes = "SELECT * FROM Recipes WHERE category_id = '$id'";
+                $statement = $pdo->prepare($fetch_recipes);
+                $statement->execute();
+                $recipes = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $recipesCount = count($recipes);
+                echo "<div class='category-pill'><a href='../../category.php?name={$category['name']}'>{$category['name']}: ({$recipesCount})</a></div>";
               }
               echo "</div>";
             }

@@ -26,8 +26,8 @@ function find_user_email(object $pdo, string $email) {
   return $data;
 }
 
-function set_user(object $pdo, string $username, string $email, string $password) {
-  $query = "INSERT INTO Users (username, email, password) VALUES (:username, :email, :password);";
+function set_user(object $pdo, string $username, string $email, string $password, string $role) {
+  $query = "INSERT INTO Users (username, email, password, role) VALUES (:username, :email, :password, :role);";
   $statement = $pdo->prepare($query);
 
   // hash password
@@ -40,5 +40,6 @@ function set_user(object $pdo, string $username, string $email, string $password
   $statement->bindParam(":username", $username);
   $statement->bindParam(":email", $email);
   $statement->bindParam(":password", $hashedPassword);
+  $statement->bindParam(":role", $role);
   $statement->execute();
 }

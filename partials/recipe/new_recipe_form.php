@@ -15,8 +15,7 @@
   <label for="photo" class="form-label">Photo</label>
   <input type="file" id="photo" class="form-control" name="photo" required ><br>
   <label for="location" class="form-label">Location</label>
-  <input type="text" class="form-control" id="location" name="location" required ><br>
-  <input type="text" id="location" name="location" placeholder="location"><br>
+  <input type="text" class="form-control" id="location" name="location" placeholder="location" required ><br>
 
   <?php 
     // Fetch categories from database

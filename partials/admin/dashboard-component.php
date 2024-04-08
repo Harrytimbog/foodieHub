@@ -22,7 +22,7 @@ try {
   
   // Users column
   echo "<div class='col-md-6'>";
-  echo "<h2 class='dashboard-heading text-center'>Users</h2>";
+  echo "<h2 class='dashboard-heading text-center'>Users (" . count($users) . ")</h2>";
   echo "<div class='list-group'>";
   foreach($users as $user) {
     if ($user['is_admin'] === 0 ) {
@@ -41,7 +41,7 @@ try {
   
   // Recipes column
   echo "<div class='col-md-6'>";
-  echo "<h2 class='dashboard-heading text-center'>Recipes</h2>";
+  echo "<h2 class='dashboard-heading text-center'>Recipes (" . count($recipes) . ")</h2>";
   echo "<div class='list-group'>";
   foreach($recipes as $recipe) {
     echo "<div class='list-group-item d-flex justify-content-between align-items-center'>";

@@ -93,8 +93,8 @@ if (isset($_GET["title"])) {
               <p>Instructions: <?php echo $recipe["instructions"]; ?></p>
               <p>Chef: <?php echo $chef["username"]; ?></p>
               <p>Category: <span class='recipe-category'><a href='./category.php?name=<?php echo urlencode($category["name"]); ?>'><?php echo htmlspecialchars($category["name"]); ?></a></span></p>
-              <p>Prep Time: <b><?php echo $recipe["prep_time"] ?> minutes</b></p>
-              <p>location: <?php echo $recipe["location"]; ?></p>
+              <p>Prep Time: <b><?php echo $recipe["prep_time"] ?> minutes </b><img src="./images/icons/timer.png" alt="Timer" /></p>
+              <p>location: <?php echo $recipe["location"]; ?> <img src="./images/icons/location.png" alt="location"></p>
               <p>Created on: <?php echo date("F j, Y, g:i a", strtotime($recipe["created_at"])); ?></p>
             </div>
             
@@ -106,7 +106,7 @@ if (isset($_GET["title"])) {
                   echo "<a href='./edit-recipe.php?title={$recipe['title']}' class='btn btn-secondary'>Edit Recipe</a>";
                   echo "<form action='./includes/recipes/delete_recipe.inc.php' method='POST'>";
                   echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}'>";
-                  echo "<button type='submit' class='btn btn-danger'>Delete Recipe</button>";
+                  echo "<button type='submit' class='btn btn-danger'>Delete Recipe <img src='./images/icons/delete.png' alt=''></button>";
                   echo "</form>";
                   echo "</div>";
               }

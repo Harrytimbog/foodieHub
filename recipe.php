@@ -25,6 +25,9 @@ if (isset($_GET["title"])) {
   $sql_recipe = $pdo->prepare("SELECT * FROM Recipes WHERE title = ?");
   $sql_recipe->execute([$recipe_title]);
   $recipe = $sql_recipe->fetch(PDO::FETCH_ASSOC);
+
+  $longitude = $recipe['longitude'];
+  $latitude = $recipe['latitude'];
   
   if (!$recipe) {
     die('Recipe not Found');
@@ -65,7 +68,6 @@ if (isset($_GET["title"])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/recipe-page.css">
-
   <link rel="stylesheet" href="/css/footer.css">
   <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
@@ -91,7 +93,7 @@ if (isset($_GET["title"])) {
               <p>Instructions: <?php echo $recipe["instructions"]; ?></p>
               <p>Chef: <?php echo $chef["username"]; ?></p>
               <p>Category: <span class='recipe-category'><a href='./category.php?name=<?php echo urlencode($category["name"]); ?>'><?php echo htmlspecialchars($category["name"]); ?></a></span></p>
-
+              <p>Prep Time: <b><?php echo $recipe["prep_time"] ?> minutes</b></p>
               <p>location: <?php echo $recipe["location"]; ?></p>
               <p>Created on: <?php echo date("F j, Y, g:i a", strtotime($recipe["created_at"])); ?></p>
             </div>
@@ -112,7 +114,7 @@ if (isset($_GET["title"])) {
                 // If the recipe is already in favorites, display "Remove From Favorites" button
                 echo "<form action='./includes/favorites/remove_from_favorites.inc.php' method='POST'>";
                 echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}' />";
-                echo "<button type='submit' name='remove_from_favorites' class='btn btn-danger'>Remove From Favorites</button>";
+                echo "<button type='submit' name='remove_from_favorites' class='btn btn-danger mt-5'>Remove From Favorites</button>";
                 echo "</form>";
               } else {
                 // If the recipe is not in favorites, display "Add To Favorites" button
@@ -141,7 +143,7 @@ if (isset($_GET["title"])) {
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script>
     function initMap() {
-      var location = {lat: -25.363, lng: 131.044}
+      var location = {lat: <?php echo $latitude; ?>, lng: <?php echo $longitude; ?>}
       var map = new google.maps.Map(document.getElementById("map"), {
         zoom: 4,
         center: location

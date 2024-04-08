@@ -4,6 +4,8 @@
 <form action="../../includes/recipes/add_recipe.inc.php" method="POST" enctype="multipart/form-data">
   <label for="title" class="form-label">Title</label>
   <input type="text" id="title" name="title" class="form-control" required ><br>
+  <label for="prep_time" class="form-label">Prep Time</label>
+  <input type="text" id="prep_time" name="prep_time" class="form-control" required ><br>
   <label for="description" class="form-label">Description</label>
   <textarea id="description" name="description" class="form-control" rows="4" cols="50"></textarea><br>
   <label for="ingredients" class="form-label">Ingredients</label>
@@ -14,6 +16,8 @@
   <input type="file" id="photo" class="form-control" name="photo" required ><br>
   <label for="location" class="form-label">Location</label>
   <input type="text" class="form-control" id="location" name="location" required ><br>
+  <input type="text" id="location" name="location" placeholder="location"><br>
+
   <?php 
     // Fetch categories from database
 

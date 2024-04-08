@@ -1,4 +1,18 @@
 <?php
+
+require_once realpath(__DIR__ . "/../../vendor/autoload.php");
+
+
+use Dotenv\Dotenv;
+
+
+$dotenv = Dotenv::createImmutable(dirname(__DIR__ . "/../../.env"));
+$dotenv->load();
+// Get Google MAP API frim Environment
+
+
+$googleMapApiKey = $_ENV["GOOGLE_MAP_API"];
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include database connection
@@ -13,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST["description"];
     $ingredients = $_POST["ingredients"];
     $instructions = $_POST["instructions"];
+    $prep_time = $_POST["prep_time"];
     $location = $_POST["location"];
     $photo = $_POST["photo"];
     $category_id = $_POST["category_id"];
@@ -22,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = trim($description);
     $ingredients = trim($ingredients);
     $instructions = trim($instructions);
+    $prep_time = trim($prep_time);
     $location = trim($location);
     $category_id = trim($category_id);
 
@@ -61,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $errors = [];
 
-    if (is_input_empty($title, $description, $ingredients, $instructions, $location, $photo)) {
+    if (is_input_empty($title, $description, $ingredients, $prep_time, $instructions, $location)) {
       $errors["empty_input"] = "Fill in all fields!";
     }
 
@@ -69,36 +85,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $errors["title_taken"] = "Recipe already taken";
     }
 
+    // Geocode Location
 
-    // Prepare the SQL statement
-    $sql = "INSERT INTO Recipes (title, description, ingredients, instructions, chef_id, location, photo, category_id) VALUES (:title, :description, :ingredients, :instructions, :chef_id, :location, :photo, :category_id)";
-    $stmt = $pdo->prepare($sql);
+    $api_key = $googleMapApiKey;
+    $geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . urlencode($location) . "&key=" . $api_key;
 
-    // Bind parameters
-    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-    $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-    $stmt->bindParam(':ingredients', $ingredients, PDO::PARAM_STR);
-    $stmt->bindParam(':instructions', $instructions, PDO::PARAM_STR);
-    $stmt->bindParam(':chef_id', $_SESSION['user_id'], PDO::PARAM_INT);
-    $stmt->bindParam(':location', $location, PDO::PARAM_STR);
-    $stmt->bindParam(':photo', $photo, PDO::PARAM_STR);
-    $stmt->bindParam(':category_id', $category_id, PDO::PARAM_STR);
 
-    // Execute the statement
-    if ($stmt->execute()) {
-        // Recipe added successfully
-        // Redirect back to the page where the form was submitted
-        // header("Location: " . $_SERVER['HTTP_HOST'] . "/recipes.php");
-        header("Location: ../../../../recipes.php");
-        exit();
-    } else {
-        // Error occurred while adding the recipe
-        // Redirect back to the form with an error message
-        header("Location: " . $_SERVER['HTTP_REFERER'] . "?error=1");
-        exit();
+    $response = file_get_contents($geocode_url);
+
+    $data = json_decode($response);
+
+    if ($data->status == "OK") {
+
+      $latitude = $data->results[0]->geometry->location->lat;
+      $longitude = $data->results[0]->geometry->location->lng;
+      
+      
+      // Prepare the SQL statement
+      $sql = "INSERT INTO Recipes (title, description, ingredients, instructions, chef_id, location, prep_time, photo, longitude, latitude, category_id) VALUES (:title, :description, :ingredients, :instructions, :chef_id, :location, :prep_time, :photo, :longitude, :latitude, :category_id)";
+      $stmt = $pdo->prepare($sql);
+
+      // Bind parameters
+      $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+      $stmt->bindParam(':description', $description, PDO::PARAM_STR);
+      $stmt->bindParam(':ingredients', $ingredients, PDO::PARAM_STR);
+      $stmt->bindParam(':prep_time', $prep_time, PDO::PARAM_STR);
+      $stmt->bindParam(':instructions', $instructions, PDO::PARAM_STR);
+      $stmt->bindParam(':chef_id', $_SESSION['user_id'], PDO::PARAM_INT);
+      $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+      $stmt->bindParam(':photo', $photo, PDO::PARAM_STR);
+      $stmt->bindParam(':latitude', $latitude, PDO::PARAM_STR);
+      $stmt->bindParam(':longitude', $longitude, PDO::PARAM_STR);
+      $stmt->bindParam(':category_id', $category_id, PDO::PARAM_STR);
+
+
+      // Execute the statement
+      if ($stmt->execute()) {
+          // Recipe added successfully
+          // Redirect back to the page where the form was submitted
+          // header("Location: " . $_SERVER['HTTP_HOST'] . "/recipes.php");
+          header("Location: ../../../../recipes.php");
+          exit();
+      } else {
+          // Error occurred while adding the recipe
+          // Redirect back to the form with an error message
+          header("Location: " . $_SERVER['HTTP_REFERER'] . "?error=1");
+          exit();
+      }
     }
 } else {
     // If the form is not submitted, redirect to an error page or homepage
     header("Location: ../../error.php");
     exit();
-}
+  }

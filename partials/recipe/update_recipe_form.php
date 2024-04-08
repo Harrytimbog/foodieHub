@@ -4,6 +4,8 @@
 <form action="../../includes/recipes/update_recipe.inc.php" method="POST" enctype="multipart/form-data">
   <label for="title" class="form-label">Title</label>
   <input type="text" id="title" name="title" value="<?php echo $recipe['title'] ?>" class="form-control" ><br>
+  <label for="prep_time" class="form-label">Prep Time</label>
+  <input type="text" id="prep_time" name="prep_time" value="<?php echo $recipe['prep_time'] ?>" class="form-control" ><br>
   <input type="hidden" id="recipe_id" name="recipe_id" value="<?php echo $recipe['recipe_id'] ?>" class="form-control" ><br>
   <label for="description" class="form-label">Description</label>
   <textarea id="description" name="description" class="form-control" rows="4" cols="50"><?php echo $recipe['description'] ?></textarea><br>

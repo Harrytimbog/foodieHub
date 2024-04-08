@@ -90,7 +90,6 @@ $categories = [
     ['name' => 'Soups and Stews'],
     ['name' => 'Salads'],
     ['name' => 'Seafood'],
-    ['name' => 'Seafood'],
 ];
 
 // Sample data for recipes

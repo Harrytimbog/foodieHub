@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 
-    $allowedFormat = array('jpg', 'jpeg', 'png', 'avif');
+    $allowedFormat = array('jpg', 'jpeg', 'png', 'avif', 'webp');
 
     // check if type of file submitted is of a format we allowed
     if (in_array($fileActualExt, $allowedFormat)) {

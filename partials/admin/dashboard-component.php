@@ -45,7 +45,7 @@ try {
   echo "<div class='list-group'>";
   foreach($recipes as $recipe) {
     echo "<div class='list-group-item d-flex justify-content-between align-items-center'>";
-    echo "<a class='recipe-link' href='recipe_details.php?username={$recipe['title']}'>{$recipe['title']}</a>";
+    echo "<a class='recipe-link' href='recipe.php?title={$recipe['title']}'>{$recipe['title']}</a>";
     echo "<form class='delete-form' action='../includes/recipes/delete_recipe.inc.php' method='post'>";
     echo "<input type='hidden' name='recipe_id' value='{$recipe['recipe_id']}'>";
     echo "<input type='submit' class='btn btn-danger' value='Delete' onclick='return confirm(\"Are you sure you want to delete this recipe?\");'>";

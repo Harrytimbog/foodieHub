@@ -14,6 +14,7 @@ try {
 
     $user = $sql->fetch(PDO::FETCH_ASSOC);
     if ($user["role"] !== 'Chef' || $user['is_admin'] === 0) {
+      echo $user["role"];
       header("Location: restricted.php");
       exit();
     }

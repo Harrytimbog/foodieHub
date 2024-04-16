@@ -1,7 +1,14 @@
 <?php 
 require_once "includes/utils/session_config.php";
 require_once "views/signup_view.inc.php";
-?>
+
+
+  // Redirect logged in user away from signup page
+  if(isset($_SESSION['user_id'])) {
+    header("Location: home.php");
+    exit();
+  }
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +20,10 @@ require_once "views/signup_view.inc.php";
   <link rel="stylesheet" href="/css/signup.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/footer.css">
-
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <!-- <link rel="manifest" href="/site.webmanifest"> -->
 </head>
 <body>
   <!-- NAVBAR -->
@@ -26,8 +36,8 @@ require_once "views/signup_view.inc.php";
           <h2 class="mt-5 signup-header">Join FoodieHub: Your Culinary Adventure Begins Here</h2>
           <form action="includes/signup/signup.inc.php" method="POST">
             <?php 
-        auth_inputs();
-        ?>
+            auth_inputs();
+            ?>
 
         <button class="btn btn-primary btn-lg">sign up</button>
         </form>

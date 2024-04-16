@@ -9,6 +9,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color: var(--accent-color2);
 }
 
 img {
@@ -16,5 +17,22 @@ img {
 }
 
 .profile-page {
-  height: 100vh;
+  min-height: 100vh;
+}
+
+#profile-avatar {
+  width: 450px;
+  height: auto;
+  /* border-radius: 100%; */
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.manage-profile {
+  min-height: 80vh;
 }

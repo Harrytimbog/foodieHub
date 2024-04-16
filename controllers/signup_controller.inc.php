@@ -31,7 +31,7 @@ function is_username_taken(object $pdo, string $username) {
   }
 }
 
-// Validate email uniqueness
+////////////////////////// Validate email uniqueness ///////////
 function is_email_registered(object $pdo, string $email) {
   // get username from the db via the model
   if (find_user_email($pdo, $email)){
@@ -46,5 +46,5 @@ function is_email_registered(object $pdo, string $email) {
 function create_user(object $pdo, string $username, string $email, string $role , string $password) {
   // connect to the model to create user
 
-  set_user($pdo, $username, $email, $password);
+  set_user($pdo, $username, $email, $password, $role);
 }

@@ -1,25 +1,41 @@
 <?php 
 
+require_once realpath(__DIR__ . "/../../vendor/autoload.php");
+
+
+use Dotenv\Dotenv;
+
+// Load the .env file from the root folder
+
+
+// Access environmental variables
+
+if (getenv('CLEARDB_DATABASE_URL')) {
+    // Heroku environment variables
+    $url = parse_url(getenv('CLEARDB_DATABASE_URL'));
+    $db_servername = $url['host'];
+    $db_username = $url['user'];
+    $db_password = $url['pass'];
+    $db_name = substr($url['path'], 1);
+  } else {
+    // Local development environment variables from .env file
+    $dotenv = Dotenv::createImmutable(dirname(__DIR__ . "/../../.env"));
+    $dotenv->load();
+    $db_servername = $_ENV['DB_SERVERNAME'];
+    $db_username = $_ENV['DB_USERNAME'];
+    $db_password = $_ENV['DB_PASSWORD'];
+    $db_name = $_ENV['DB_NAME'];
+    $googleMapApiKey = $_ENV["GOOGLE_MAP_API"];
+}
+
+
+// $db_servername = $_ENV['DB_SERVERNAME'];
+// $db_username = $_ENV['DB_USERNAME'];
+// $db_password = $_ENV['DB_PASSWORD']; 
+// $db_name = $_ENV['DB_NAME'];
+
+
 try {
-  // Database connection credentials
-  $db_servername = "localhost";
-  $db_username = "root";
-  $db_password = "PeerPal"; 
-  $db_name = "FoodieHub";
-
-  // Import load_dotenv
-
-  // require_once("load_dotenv.php");
-  // $db_servername = $_ENV['DB_SERVERNAME'];
-  // $db_username = $_ENV['DB_USERNAME'];
-  // $db_password = $_ENV['DB_PASSWORD']; 
-  // $db_name = $_ENV['DB_NAME'];
-
-
-  // echo "<p> " .$db_servername. "</p>";
-  // echo "<p> " .$db_username. "</p>";
-  // echo "<p> " .$db_password. "</p>";
-  // echo "<p> " .  $db_name. "</p>";
 
   // connect database
 
@@ -32,7 +48,7 @@ try {
   //////////////////////////////////////// Start Creating Tables ////////////////////////////////////////////
   // CREATE DATABASE
 
-  $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
+  // $sql_db = "CREATE DATABASE IF NOT EXISTS foodiehub";
 
   // Create Users Table
 
@@ -65,7 +81,10 @@ try {
     instructions TEXT,
     chef_id INT NOT NULL,
     category_id INT NOT NULL,
-    address VARCHAR(255),
+    location VARCHAR(255),
+    prep_time INT,
+    latitude DECIMAL(10, 8),
+    longitude DECIMAL(11, 8),
     photo VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -100,7 +119,7 @@ try {
 
 // Execute SQL commands
 
-$pdo->exec($sql_db);
+#$pdo->exec($sql_db);
 $pdo->exec($sql_users);
 $pdo->exec($sql_categories);
 $pdo->exec($sql_recipes);
@@ -109,6 +128,7 @@ $pdo->exec($sql_comments);
 
 // echo "Tables created successfully";
 // echo "<p>Tables created successfully<p>";
+
 ////////////////////////////////////////////// Finished Creating Table //////////////////////////////////////
 } catch (PDOException $e) {
   echo "Error occured while creating tables " . $e->getMessage();

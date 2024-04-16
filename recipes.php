@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="/css/navbar.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/footer.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/favicon-16x16.png">
+  <!-- <link rel="manifest" href="/site.webmanifest"> -->
 </head>
 <body>
   <!-- NAVBAR -->
@@ -23,8 +27,35 @@
       </div>
       <!-- brand | search bar -->
 
-      
-      
+      <!-- Filter Form -->
+    <div class="row justify-content-center mt-4">
+      <form class="form-inline" method="GET" action="">
+        <div class="d-flex">
+          <div class="form-group mx-sm-3 mb-2">
+            <input type="text" class="form-control" id="inputlocation" name="location" placeholder="location">
+          </div>
+          <div class="form-group mx-sm-3 mb-2">
+            <select class="form-select" id="inputCategory" name="category">
+              <option selected disabled>Choose Category</option>
+              <?php
+                // Fetch and display categories
+                include "./includes/utils/db_connection.php";
+                $fetch_categories = "SELECT * FROM Categories";
+                $statement = $pdo->prepare($fetch_categories);
+                $statement->execute();
+                $categories = $statement->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($categories as $category) {
+                  echo "<option value='{$category['category_id']}'>{$category['name']}</option>";
+                }
+              ?>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary mb-2">Filter</button>
+        </div>
+      </form>
+    </div>
+
+      <?php // echo sizeof($category) ?>
       <div class="row recipe-content">
 
         <!-- categories -->
@@ -47,7 +78,14 @@
               echo "<div class='categories col'>";
               echo "<h3 class='mt-5 text-center category-header'>Categories</h3>";
               foreach ($categories as $category) {
-                echo "<div class='category-pill'><a href='../../category.php?name={$category['name']}'>{$category['name']}</a></div>";
+                // fetch recipes in this category
+                $id = $category['category_id'];
+                $fetch_recipes = "SELECT * FROM Recipes WHERE category_id = '$id'";
+                $statement = $pdo->prepare($fetch_recipes);
+                $statement->execute();
+                $recipes = $statement->fetchAll(PDO::FETCH_ASSOC);
+                $recipesCount = count($recipes);
+                echo "<div class='category-pill'><a href='../../category.php?name={$category['name']}'>{$category['name']}: ({$recipesCount})</a></div>";
               }
               echo "</div>";
             }
@@ -67,15 +105,14 @@
             
             <?php 
               include "./includes/utils/db_connection.php";
-
-              $user_id = $_SESSION['user_id'];
-              $currentUserSql = "SELECT * FROM users where user_id = ?";
-              $statement = $pdo->prepare($currentUserSql);
-              $statement->execute([$user_id]);
-              $currentUser = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+              
               // Confirm that user is logged in and that user is an admin or a chef
               if (isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+                $currentUserSql = "SELECT * FROM Users where user_id = ?";
+                $statement = $pdo->prepare($currentUserSql);
+                $statement->execute([$user_id]);
+                $currentUser = $statement->fetchAll(PDO::FETCH_ASSOC);
                 if ($_SESSION['is_admin'] === 1) {
                   echo '<a class="btn btn-dark" href="/add-category.php">Add Recipe Category</a> <br>';
                 }

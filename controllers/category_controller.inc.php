@@ -2,7 +2,7 @@
 
 declare(strict_types= 1);
 
-// Validate that all field are not empty
+////////////////////////////////// Validate that all field are not empty /////////
 function is_input_empty(string $name) {
   if (empty($name)) {
     return true;

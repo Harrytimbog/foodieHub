@@ -33,6 +33,8 @@ function auth_inputs() {
     echo '<div class="mb-3">';
     echo '<label for="password" class="form-label">Password</label>';
     echo '<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>';
+    echo '<label for="confirmPassword" class="form-label mt-3">Confirm Password</label>';
+    echo '<input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>';
     echo '</div>';
 }
 
@@ -42,7 +44,7 @@ function check_auth_errors() {
     // echo "<br>";
 
     foreach ($errors as $error) {
-      echo '<p>' . $error . '</p>';
+      echo '<p class="error">' . $error . '</p>';
     }
 
     // Delete this errors from session because it isn't needed anymore

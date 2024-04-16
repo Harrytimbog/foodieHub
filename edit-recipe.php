@@ -29,9 +29,9 @@ try {
       header("Location: ./login.php");
     }
     
-    if ($user['is_admin'] == 0 || $recipe['chef_id'] !== $user_id) {
-      header("Location: ./restricted.php");      
-    }
+    // if ($user['is_admin'] == 0 || $recipe['chef_id'] !== $user_id) {
+    //   header("Location: ./restricted.php");      
+    // }
 
     if ($recipe) {
       ?>

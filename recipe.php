@@ -96,12 +96,15 @@ if (isset($_GET["title"])) {
               <p>Prep Time: <b><?php echo $recipe["prep_time"] ?> minutes </b><img src="./images/icons/timer.png" alt="Timer" /></p>
               <p>location: <?php echo $recipe["location"]; ?> <img src="./images/icons/location.png" alt="location"></p>
               <p>Created on: <?php echo date("F j, Y, g:i a", strtotime($recipe["created_at"])); ?></p>
+              <button class="copy-btn btn btn-light my-5" onclick="copyToClipboard(this)"><img src="./images/icons/share.png" alt="share">Share Recipe</button>
+              <textarea id="recipe-textarea" style="position: absolute; left: -9999px;"></textarea>
+
             </div>
             
             <?php 
 
             if (isset($_SESSION['user_id'])) {
-              if ($_SESSION['is_admin'] === 1 || $_SESSION['user_id'] === $chef['user_id']) {
+              if ($_SESSION['is_admin'] === 1 || ($_SESSION['user_id'] === $chef['user_id'])) {
                   echo "<div class='action-btns'>";
                   echo "<a href='./edit-recipe.php?title={$recipe['title']}' class='btn btn-secondary'>Edit Recipe</a>";
                   echo "<form action='./includes/recipes/delete_recipe.inc.php' method='POST'>";
@@ -156,5 +159,29 @@ if (isset($_GET["title"])) {
     }
   </script>    
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo $googleMapApiKey; ?>&callback=initMap"></script>
+  <script>
+  function copyToClipboard(button) {
+      // Get the recipe text to copy
+      var recipeText = button.parentElement.textContent.trim();
+
+      // Get the textarea element
+      var textarea = document.getElementById('recipe-textarea');
+
+      // Set the textarea value to the recipe text
+      textarea.value = recipeText;
+
+      // Select the textarea content
+      textarea.select();
+
+      // Copy the selected text to clipboard
+      document.execCommand('copy');
+
+      // Deselect the textarea
+      textarea.setSelectionRange(0, 0);
+
+      // Display a success message
+      alert('Recipe copied to clipboard!');
+  }
+  </script>
 </body>
 </html>

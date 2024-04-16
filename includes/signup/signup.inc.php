@@ -9,12 +9,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $email = $_POST["email"];
   $password = $_POST["password"];
   $role = $_POST["role"];
+  $confirmPassword = $_POST["confirmPassword"];
 
   try {
 
     // ERROR HANDLERS
       // Create Errors array
     $errors = [];
+
+    if ($password !== $confirmPassword) {
+      $errors["password_unmatch"] = "Passwords didn't match!";
+    }
 
     if (is_input_empty($username, $email, $password)) {
       $errors["empty_input"] = "Fill in all fields!";
@@ -46,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       $_SESSION["signup_data"] = $signupDetails;
 
-      header("Location: ../../../../login.php");
+      header("Location: ../../../../signup.php");
       die();
     }
 

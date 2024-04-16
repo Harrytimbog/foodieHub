@@ -22,3 +22,11 @@ img {
 .signup-header {
   color: var(--accent-color2);
 }
+
+.error {
+  color: white;
+  padding: 0.6rem 1.2rem;
+  background-color: red;
+  border-radius: 6px;
+  text-align: center;
+}
